@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<form action="/add" method="post" class="d-flex mb-3">
+    <input type="text" name="title" class="form-control me-2" placeholder="Новая задача" required>
+    <button type="submit" class="btn btn-primary">Добавить</button>
+</form>
+
+<ul class="list-group">
+    {% for task in tasks %}
+    <li class="list-group-item d-flex justify-content-between">
+        <span {% if task.complete %}style="text-decoration: line-through;"{% endif %}>
+            {{ task["title"] }}
+        </span>
+        <div>
+            {% if not task["complete"] %}
+            <a href="/complete/{{ task['id'] }}" class="btn btn-success btn-sm">✔</a>
+            {% endif %}
+            <a href="/delete/{{ task['id'] }}" class="btn btn-danger btn-sm">🗑</a>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
