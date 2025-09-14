@@ -1,14 +1,14 @@
 :root {
   --bg: #0f1220;          /* фон приложения */
   --bg-soft: #151a2e;     /* мягкие блоки */
-  --bg-glass: rgba(255,255,255,0.04);
+  --bg-glass: rgba(106, 232, 49, 0.64);
   --text: #e9ecf1;
-  --muted: #9aa3b2;
+  --muted: rgba(248, 248, 246, 0.64);
   --primary: #7aa2ff;
   --success: #5ad19a;
   --danger: #ff7171;
   --info: #67d4ff;
-  --border: rgba(255,255,255,0.08);
+  --border: rgba(248, 248, 246, 0.64);
   --shadow: 0 10px 30px rgba(0,0,0,0.35);
 }
 
@@ -36,11 +36,11 @@ html, body {
 
 .list-group-flush .list-group-item {
   background: transparent;
-  border-color: var(--border);
+  border-color: var(--bg-glass);
 }
 
 .item-dark {
-  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(163, 178, 154, 0.64));
 }
 
 .form-control-dark {
@@ -52,7 +52,7 @@ html, body {
 .form-control-dark:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 0.2rem rgba(122,162,255,0.15);
+  box-shadow: 0 0 0 0.2rem rgba(163, 178, 154, 0.64);
 }
 
 .btn-primary {
@@ -122,7 +122,10 @@ html, body {
 .calendar-item.done {
   text-decoration: line-through;
   color: var(--muted);
-  background: rgba(255,255,255,0.02);
+  background: rgba(48, 62, 41, 0.64);
 }
 
-.xsmall { font-size: 0.8rem; color: var(--muted); }
+.text-muted small {
+  font-size: 0.8rem; color: var(--muted);
+}
+/*var(--muted)         var(--border)                             xsmall*/
