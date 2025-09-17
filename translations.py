@@ -1,0 +1,36 @@
+translations = {
+    "ru": {
+        "title": "Календарь задач",
+        "add_task": "Добавить задачу",
+        "delete": "Удалить",
+        "complete": "Выполнено",
+        "uncomplete": "Снять",
+        "today": "Сегодня",
+        "overdue": "Просрочено",
+        "deadline": "Срок",
+        "task_title": "Заголовок задачи",
+        "task_description": "Описание (по желанию)",
+        "task_due": "Срок",
+        "you_have_tasks_today": "У вас есть задачи на сегодня. Хотите включить уведомления браузера?",
+        "enable_notify": "Включить",
+        "reminder": "Напоминание",
+        "dont_forget_tasks": "Не забудьте выполнить задачи на сегодня!"
+    },
+    "en": {
+        "title": "Task Calendar",
+        "add_task": "Add Task",
+        "delete": "Delete",
+        "complete": "Completed",
+        "uncomplete": "Undo",
+        "today": "Today",
+        "overdue": "Overdue",
+        "deadline": "Deadline",
+        "task_title": "Task title",
+        "task_description": "Description (optional)",
+        "task_due": "Due date",
+        "you_have_tasks_today": "You have tasks for today. Do you want to enable browser notifications?",
+        "enable_notify": "Enable",
+        "reminder": "Reminder",
+        "dont_forget_tasks": "Don't forget to complete today's tasks!"
+    }
+}

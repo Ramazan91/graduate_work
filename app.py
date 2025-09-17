@@ -2,11 +2,31 @@ from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
 from datetime import datetime, date
 import calendar as pycalendar
+from flask import Flask, render_template, request
+from translations import translations
+
 import os
 
 app = Flask(__name__)
 
 DB_PATH = "tasks.db"
+
+# подключение к базе
+def get_db_connection(DATABASE=None):
+    conn = sqlite3.connect(DATABASE)
+    conn.row_factory = sqlite3.Row
+    return conn
+
+
+# переводчик (доступен во всех шаблонах как t["..."])
+@app.context_processor
+def inject_translations():
+    lang = request.args.get("lang", "ru")
+    return dict(
+        t=translations.get(lang, translations["ru"]),
+        current_lang=lang
+    )
+
 
 def get_db_connection():
     conn = sqlite3.connect(DB_PATH)
