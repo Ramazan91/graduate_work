@@ -1,7 +1,7 @@
 translations = {
     "ru": {
         "title": "Календарь задач",
-        "add_task": "Добавить задачу",
+        "add_task": "Создать",
         "delete": "Удалить",
         "complete": "Выполнено",
         "uncomplete": "Снять",
@@ -14,11 +14,16 @@ translations = {
         "you_have_tasks_today": "У вас есть задачи на сегодня. Хотите включить уведомления браузера?",
         "enable_notify": "Включить",
         "reminder": "Напоминание",
-        "dont_forget_tasks": "Не забудьте выполнить задачи на сегодня!"
+        "dont_forget_tasks": "Не забудьте выполнить задачи на сегодня!",
+        "prev": "Пред",
+        "next": "След",
+        "weekdays": ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
+        "list": "Лист",
+        "calendar": "Календарь"
     },
     "en": {
         "title": "Task Calendar",
-        "add_task": "Add Task",
+        "add_task": "Add File",
         "delete": "Delete",
         "complete": "Completed",
         "uncomplete": "Undo",
@@ -31,6 +36,11 @@ translations = {
         "you_have_tasks_today": "You have tasks for today. Do you want to enable browser notifications?",
         "enable_notify": "Enable",
         "reminder": "Reminder",
-        "dont_forget_tasks": "Don't forget to complete today's tasks!"
+        "dont_forget_tasks": "Don't forget to complete today's tasks!",
+        "prev": "Prev",
+        "next": "Next",
+        "weekdays": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        "list": "List",
+        "calendar": "Calendar",
     }
 }

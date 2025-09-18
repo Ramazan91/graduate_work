@@ -58,6 +58,9 @@ html, body {
 .btn-primary {
   background: var(--primary);
   border: none;
+  /*font-size: 0.8em;*/
+  /*width: 100px;*/
+  /*height: 45px;*/
 }
 .btn-outline-light { border-color: var(--border); color: var(--text); }
 .btn-outline-light:hover { background: var(--bg-soft); }

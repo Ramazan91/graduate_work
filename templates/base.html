@@ -8,20 +8,33 @@
   <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
 </head>
 <body class="bg-app text-app">
+
   <nav class="navbar navbar-dark navbar-blur mb-4">
-    <div class="container">
-      <a class="navbar-brand fw-semibold" href="{{ url_for('index') }}">📋 To-Do</a>
+    <div class="container d-flex justify-content-between align-items-center">
+
+      <!-- Флажки слева -->
       <div class="d-flex gap-2">
-        <a class="btn btn-outline-light btn-sm" href="{{ url_for('index') }}">Список</a>
-        <a class="btn btn-light btn-sm" href="{{ url_for('calendar_view') }}">Календарь</a>
+        <a class="btn btn-outline-light btn-sm" href="{{ url_for('index', lang='ru') }}">🇷🇺</a>
+        <a class="btn btn-outline-light btn-sm" href="{{ url_for('index', lang='en') }}">🇬🇧</a>
       </div>
+
+      <!-- Название по центру -->
+      <a class="navbar-brand fw-semibold" href="{{ url_for('index', lang=current_lang) }}">📋 To-Do</a>
+
+      <!-- Навигация справа -->
+      <div class="d-flex gap-2">
+        <a class="btn btn-outline-light btn-sm" href="{{ url_for('index', lang=current_lang) }}">{{ t["list"] }}</a>
+        <a class="btn btn-light btn-sm" href="{{ url_for('calendar_view', lang=current_lang) }}">{{ t["calendar"] }}</a>
+      </div>
+
     </div>
   </nav>
 
   <main class="container mb-5">
     {% block content %}{% endblock %}
   </main>
+
 <script src="{{ url_for('static', filename='js/clock.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/reminders.js') }}"></script>
+<script src="{{ url_for('static', filename='js/reminders.js') }}"></script>
 </body>
 </html>
