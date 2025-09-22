@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
 from datetime import datetime, date
 import calendar as pycalendar
-from flask import Flask, render_template, request
+# from flask import Flask, render_template, request
 from translations import translations
 
 import os
