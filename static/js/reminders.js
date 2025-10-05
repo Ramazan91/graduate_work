@@ -1,7 +1,7 @@
-if ("Notification" in window) {
-  Notification.requestPermission();
+if ("Notification" in window) {    // Это строчка смотрит есть ли в браузере пуш
+  Notification.requestPermission();  // это строчка делает запрос на разрешения уведомления
 
-  function checkReminders() {
+  function checkReminders() {  // ищим все элементы, у которых есть атрибут data-due
     const tasks = document.querySelectorAll("[data-due]");
     const now = new Date();
 
