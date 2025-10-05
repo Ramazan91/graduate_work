@@ -1,134 +1,134 @@
 :root {
-  --bg: #0f1220;          /* фон  */
-  --bg-soft: #151a2e;     /* блоки */
-  --bg-glass: rgba(106, 232, 49, 0.64);
-  --text: #e9ecf1;
-  --muted: rgba(248, 248, 246, 0.64);
-  --primary: #7aa2ff;
-  --success: #5ad19a;
-  --danger: #ff7171;
-  --info: #67d4ff;
-  --border: rgba(248, 248, 246, 0.64);
-  --shadow: 0 10px 30px rgba(0,0,0,0.35);
+  --bg: #0f1220;          /* Основной цвет фона страницы */
+  --bg-soft: #151a2e;     /* Мягкий тёмный фон для блоков и карточек */
+  --bg-glass: rgba(106, 232, 49, 0.64); /* Полупрозрачный "стеклянный" фон */
+  --text: #e9ecf1;        /* Основной цвет текста */
+  --muted: rgba(248, 248, 246, 0.64);   /* Второстепенный (приглушённый) цвет текста */
+  --primary: #7aa2ff;     /* Основной акцентный цвет (например, кнопки, ссылки) */
+  --success: #5ad19a;     /* Цвет для успешных действий */
+  --danger: #ff7171;      /* Цвет для ошибок или опасных действий */
+  --info: #67d4ff;        /* Цвет для информационных элементов */
+  --border: rgba(248, 248, 246, 0.64);  /* Цвет границ элементов */
+  --shadow: 0 10px 30px rgba(0,0,0,0.35); /* Общая тень для карточек и блоков */
 }
 
 html, body {
-  background: var(--bg);
-  color: var(--text);
+  background: var(--bg); /* Применяем общий фон */
+  color: var(--text);     /* Цвет текста по умолчанию */
 }
 
-.bg-app { background: var(--bg); }
-.text-app { color: var(--text); }
+.bg-app { background: var(--bg); }  /* Класс для общего фона приложения */
+.text-app { color: var(--text); }   /* Класс для общего цвета текста */
 
 .navbar-blur {
-  background: linear-gradient(180deg, rgba(20,24,45,0.7), rgba(20,24,45,0.3));
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(20,24,45,0.7), rgba(20,24,45,0.3)); /* Полупрозрачный градиент */
+  backdrop-filter: blur(8px);       /* Эффект размытия ("стекло") */
+  border-bottom: 1px solid var(--border); /* Нижняя граница навбара */
 }
 
 .card-glass, .shadow-soft {
-  background: var(--bg-glass);
-  backdrop-filter: blur(6px);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-  border-radius: 16px;
+  background: var(--bg-glass);    /* Полупрозрачный фон */
+  backdrop-filter: blur(6px);     /* Эффект размытия */
+  border: 1px solid var(--border);/* Тонкая граница */
+  box-shadow: var(--shadow);      /* Тень для объёма */
+  border-radius: 16px;            /* Скруглённые углы */
 }
 
 .list-group-flush .list-group-item {
-  background: transparent;
-  border-color: var(--bg-glass);
+  background: transparent;          /* Убираем фон у элементов списка */
+  border-color: var(--bg-glass);    /* Цвет границ под стеклянный стиль */
 }
 
 .item-dark {
-  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(163, 178, 154, 0.64));
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(163, 178, 154, 0.64)); /* Слегка осветлённый фон */
 }
 
 .form-control-dark {
-  background: var(--bg-soft);
-  color: var(--text);
-  border: 1px solid var(--border);
+  background: var(--bg-soft);  /* Тёмный фон поля ввода */
+  color: var(--text);          /* Светлый текст */
+  border: 1px solid var(--border); /* Светлая рамка */
 }
-.form-control-dark::placeholder { color: var(--muted); }
+.form-control-dark::placeholder { color: var(--muted); } /* Приглушённый цвет для placeholder */
 .form-control-dark:focus {
-  outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 0.2rem rgba(163, 178, 154, 0.64);
+  outline: none;                                    /* Убираем стандартную рамку */
+  border-color: var(--primary);                     /* Подсвечиваем рамку при фокусе */
+  box-shadow: 0 0 0 0.2rem rgba(163, 178, 154, 0.64); /* Мягкое свечение */
 }
 
 .btn-primary {
-  background: var(--primary);
-  border: none;
+  background: var(--primary); /* Основной цвет кнопки */
+  border: none;               /* Без рамки */
   /*font-size: 0.8em;*/
   /*width: 100px;*/
   /*height: 45px;*/
 }
-.btn-outline-light { border-color: var(--border); color: var(--text); }
-.btn-outline-light:hover { background: var(--bg-soft); }
-.btn-light { background: var(--text); color: #111; border: none; }
+.btn-outline-light { border-color: var(--border); color: var(--text); } /* Светлая кнопка с рамкой */
+.btn-outline-light:hover { background: var(--bg-soft); }                /* При наведении — мягкий фон */
+.btn-light { background: var(--text); color: #111; border: none; }      /* Светлая кнопка с тёмным текстом */
 
-.badge.bg-info { background: var(--info) !important; color: #001018; }
-.badge.bg-danger { background: var(--danger) !important; }
+.badge.bg-info { background: var(--info) !important; color: #001018; } /* Инфо-бейдж */
+.badge.bg-danger { background: var(--danger) !important; }             /* Бейдж ошибки */
 
 .status-dot {
-  width: 10px; height: 10px; border-radius: 50%;
+  width: 10px; height: 10px; border-radius: 50%; /* Маленький круглый индикатор */
   margin-top: 8px;
-  background: var(--muted);
-  box-shadow: 0 0 0 2px rgba(0,0,0,0.2);
+  background: var(--muted);                      /* Цвет по умолчанию */
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.2);         /* Лёгкая внешняя тень */
 }
-.status-dot.today { background: var(--info); }
-.status-dot.overdue { background: var(--danger); }
-.status-dot.done { background: var(--success); }
+.status-dot.today { background: var(--info); }    /* Цвет для задач на сегодня */
+.status-dot.overdue { background: var(--danger); }/* Цвет для просроченных задач */
+.status-dot.done { background: var(--success); }  /* Цвет для выполненных задач */
 
-.alert { border: 1px solid var(--border); }
+.alert { border: 1px solid var(--border); }       /* Общий стиль для уведомлений */
 
 .calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 8px;
+  display: grid;                                 /* Включаем CSS Grid */
+  grid-template-columns: repeat(7, 1fr);         /* Семь равных столбцов — дни недели */
+  gap: 8px;                                      /* Расстояние между ячейками */
 }
 .calendar-head {
-  text-align: center;
-  font-weight: 600;
-  color: var(--muted);
-  padding: 6px 0;
+  text-align: center;                            /* Центровка заголовков */
+  font-weight: 600;                              /* Полужирный текст */
+  color: var(--muted);                           /* Приглушённый цвет */
+  padding: 6px 0;                                /* Вертикальные отступы */
 }
 .calendar-cell {
-  min-height: 110px;
-  padding: 8px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+  min-height: 110px;                             /* Минимальная высота ячейки */
+  padding: 8px;                                  /* Внутренние отступы */
+  border: 1px solid var(--border);               /* Рамка ячейки */
+  border-radius: 12px;                           /* Скругление углов */
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015)); /* Лёгкий градиент */
 }
 .calendar-cell.today {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 2px rgba(122,162,255,0.15) inset;
+  border-color: var(--primary);                  /* Подсветка рамки */
+  box-shadow: 0 0 0 2px rgba(122,162,255,0.15) inset; /* Внутреннее сияние */
 }
 .calendar-cell.empty {
-  background: transparent;
-  border-style: dashed;
-  opacity: 0.5;
+  background: transparent;                       /* Прозрачные пустые ячейки */
+  border-style: dashed;                          /* Пунктирная рамка */
+  opacity: 0.5;                                  /* Полупрозрачность */
 }
 .calendar-day {
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 6px;
+  font-weight: 700;                              /* Жирный номер дня */
+  color: var(--text);                            /* Основной цвет */
+  margin-bottom: 6px;                            /* Отступ снизу */
 }
 .calendar-item {
-  font-size: 0.9rem;
-  color: var(--text);
-  padding: 4px 6px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  margin-bottom: 4px;
-  background: rgba(255,255,255,0.04);
+  font-size: 0.9rem;                             /* Чуть меньше стандартного текста */
+  color: var(--text);                            /* Цвет текста */
+  padding: 4px 6px;                              /* Внутренние отступы */
+  border-radius: 8px;                            /* Скруглённые углы */
+  border: 1px solid var(--border);               /* Тонкая рамка */
+  margin-bottom: 4px;                            /* Отступ между элементами */
+  background: rgba(255,255,255,0.04);            /* Полупрозрачный фон */
 }
 .calendar-item.done {
-  text-decoration: line-through;
-  color: var(--muted);
-  background: rgba(48, 62, 41, 0.64);
+  text-decoration: line-through;                 /* Перечёркивание выполненных задач */
+  color: var(--muted);                           /* Приглушённый текст */
+  background: rgba(48, 62, 41, 0.64);            /* Темновато-зелёный фон */
 }
 
 .text-muted small {
-  font-size: 0.8rem; color: var(--muted);
+  font-size: 0.8rem; color: var(--muted);        /* Мелкий приглушённый текст */
 }
 /*var(--muted)         var(--border)                             xsmall*/
