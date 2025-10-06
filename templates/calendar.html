@@ -1,36 +1,74 @@
 {% extends "base.html" %}
+{# Наследуем базовый шаблон base.html, чтобы использовать его структуру (например, header, footer) #}
+
 {% block content %}
+{# Начало блока content — сюда будет вставлено содержимое календаря #}
 
 <div class="d-flex justify-content-between align-items-center mb-3">
+  {# Создаём контейнер с Bootstrap-классами для горизонтального выравнивания и отступов #}
+
   <h2 class="m-0">{{ t["title"] }} — {{ month_name }} {{ year }}</h2>
+  {# Заголовок календаря: берём локализованный текст "title" из словаря t, название месяца и год #}
+
   <div class="d-flex gap-2">
+    {# Контейнер для кнопок навигации с небольшим промежутком между ними #}
+
     <a class="btn btn-outline-light btn-sm"
        href="{{ url_for('calendar_view', year=(month == 1 and year-1 or year), month=(month == 1 and 12 or month-1)) }}">← {{ t["prev"] }}</a>
+    {# Кнопка "предыдущий месяц":
+       - если текущий месяц январь, то год уменьшается на 1 и месяц становится 12
+       - иначе остаётся тот же год, а месяц уменьшается на 1
+       - текст кнопки берётся из локализованного словаря t["prev"] #}
+
     <a class="btn btn-light btn-sm"
        href="{{ url_for('calendar_view', year=today.year, month=today.month) }}">{{ t["today"] }}</a>
+    {# Кнопка "сегодня":
+       - ссылка на текущий год и месяц (today.year, today.month)
+       - текст кнопки берётся из t["today"] #}
+
     <a class="btn btn-outline-light btn-sm"
        href="{{ url_for('calendar_view', year=(month == 12 and year+1 or year), month=(month == 12 and 1 or month+1)) }}">{{ t["next"] }} →</a>
+    {# Кнопка "следующий месяц":
+       - если текущий месяц декабрь, год увеличивается на 1 и месяц становится 1
+       - иначе остаётся тот же год, а месяц увеличивается на 1
+       - текст кнопки берётся из t["next"] #}
   </div>
 </div>
 
 <div class="calendar-grid">
+  {# Основной контейнер календаря в виде сетки #}
+
   {% for day in t["weekdays"] %}
     <div class="calendar-head">{{ day }}</div>
+    {# Выводим заголовки дней недели (Пн, Вт, ...), берём их из словаря t["weekdays"] #}
   {% endfor %}
 
   {% for week in cal %}
     {% for day in week %}
       {% if day == 0 %}
         <div class="calendar-cell empty"></div>
+        {# Если день равен 0, значит это пустая ячейка календаря (не принадлежит текущему месяцу) #}
       {% else %}
         {% set key = "%04d-%02d-%02d"|format(year, month, day) %}
+        {# Формируем ключ даты в формате YYYY-MM-DD для поиска задач по дате #}
+
         {% set items = by_date.get(key, []) %}
+        {# Получаем список задач для этой даты, если задач нет, возвращаем пустой список #}
+
         <div class="calendar-cell {% if today.year==year and today.month==month and today.day==day %}today{% endif %}">
+          {# Ячейка календаря:
+             - если дата совпадает с сегодняшним днём, добавляем класс today для подсветки #}
+
           <div class="calendar-day">{{ day }}</div>
+          {# Выводим номер дня месяца #}
+
           {% for t in items %}
             <div class="calendar-item {% if t.complete %}done{% endif %}">
               {{ t.title }}
             </div>
+            {# Для каждой задачи:
+               - создаём div с классом done, если задача выполнена
+               - выводим название задачи t.title #}
           {% endfor %}
         </div>
       {% endif %}
@@ -39,3 +77,4 @@
 </div>
 
 {% endblock %}
+{# Конец блока content #}

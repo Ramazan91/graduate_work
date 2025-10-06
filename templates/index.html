@@ -1,11 +1,19 @@
 {% extends "base.html" %}
+{# Наследуем базовый шаблон base.html для использования общей структуры (header, footer, стили и скрипты) #}
+
 {% block content %}
+{# Начало блока content — сюда вставляется основной контент страницы #}
 
 {% if has_today %}
 <div class="alert alert-primary shadow-soft mb-4" id="todayBanner">
   🔔 {{ t["you_have_tasks_today"] }}
   <button class="btn btn-sm btn-primary ms-2" id="enableNotify">{{ t["enable_notify"] }}</button>
 </div>
+{# Если есть задачи на сегодня (has_today=True):
+   - выводим баннер с уведомлением
+   - текст берём из словаря t
+   - кнопка "включить уведомления" с id enableNotify #}
+
 <script>
   const btn = document.getElementById('enableNotify');
   if (btn && 'Notification' in window) {
@@ -18,23 +26,41 @@
     });
   }
 </script>
+{# Скрипт:
+   - ищем кнопку по id
+   - проверяем поддержку Notification API
+   - по клику запрашиваем разрешение на уведомления
+   - если разрешено, создаём уведомление с текстом из словаря t
+   - скрываем баннер после уведомления #}
 {% endif %}
 
 <div class="card card-glass mb-3">
   <div class="card-body">
     <form action="{{ url_for('add') }}" method="post" class="row g-2 align-items-start">
+      {# Форма добавления новой задачи:
+         - отправляется на route 'add'
+         - метод POST
+         - использованы Bootstrap-классы для сетки и отступов #}
+
       <div class="col-12 col-md-4">
         <input type="text" name="title" class="form-control form-control-dark" placeholder="{{ t['task_title'] }}" required>
       </div>
+      {# Поле для ввода названия задачи (обязательное) #}
+
       <div class="col-12 col-md-5">
         <input type="text" name="description" class="form-control form-control-dark" placeholder="{{ t['task_description'] }}">
       </div>
+      {# Поле для описания задачи (необязательное) #}
+
       <div class="col-8 col-md-2">
         <input type="date" name="due_date" class="form-control form-control-dark" placeholder="{{ t['task_due'] }}">
       </div>
+      {# Поле для выбора даты выполнения задачи #}
+
       <div class="col-4 col-md-1 d-grid">
         <button type="submit" class="btn btn-primary">{{ t["add_task"] }}</button>
       </div>
+      {# Кнопка "Добавить задачу" #}
     </form>
   </div>
 </div>
@@ -44,33 +70,56 @@
   <li class="list-group-item item-dark d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-2"
       data-due="{{ task.due_date }}"
       data-title="{{ task.title }}">
+    {# Перебираем все задачи:
+       - каждая задача это элемент списка
+       - data-атрибуты для хранения даты и названия задачи (можно использовать в JS) #}
+
     <div class="d-flex align-items-start gap-3">
       <div class="status-dot {% if task.complete %}done{% elif is_overdue(task) %}overdue{% elif is_today(task) %}today{% endif %}"></div>
+      {# Кружок-статус:
+         - класс done если задача выполнена
+         - класс overdue если просрочена
+         - класс today если задача на сегодня #}
+
       <div>
         <div class="fw-semibold {% if task.complete %}text-decoration-line-through opacity-75{% endif %}">
           {{ task.title }}
           {% if is_today(task) and not task.complete %}<span class="badge bg-info ms-2">{{ t["today"] }}</span>{% endif %}
           {% if is_overdue(task) %}<span class="badge bg-danger ms-2">{{ t["overdue"] }}</span>{% endif %}
         </div>
+        {# Название задачи:
+           - зачёркнуто и с уменьшенной непрозрачностью, если выполнена
+           - добавляем бейдж "Сегодня" если задача на сегодня и не выполнена
+           - добавляем бейдж "Просрочено" если задача просрочена #}
+
         {% if task.description %}
           <div class="text-muted small">{{ task.description }}</div>
         {% endif %}
+        {# Описание задачи, если оно есть #}
+
         {% if task.due_date %}
           <div class="text-muted xsmall">Срок: {{ task.due_date|human_date }}</div>
         {% endif %}
+        {# Дата выполнения задачи, форматируемая через фильтр human_date #}
       </div>
     </div>
+
     <div class="d-flex gap-2">
       {% if not task.complete %}
         <a href="{{ url_for('complete', task_id=task.id) }}" class="btn btn-success btn-sm">{{ t["complete"] }}</a>
       {% else %}
         <a href="{{ url_for('uncomplete', task_id=task.id) }}" class="btn btn-outline-secondary btn-sm">{{ t["uncomplete"] }}</a>
       {% endif %}
+      {# Кнопки выполнения/отмены выполнения задачи:
+         - если задача не выполнена — кнопка "Выполнить"
+         - если выполнена — кнопка "Отметить как невыполненную" #}
+
       <a href="{{ url_for('delete', task_id=task.id) }}" class="btn btn-danger btn-sm">🗑 {{ t["delete"] }}</a>
+      {# Кнопка удаления задачи #}
     </div>
   </li>
   {% endfor %}
 </ul>
 
 {% endblock %}
-
+{# Конец блока content #}
