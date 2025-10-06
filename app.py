@@ -28,7 +28,7 @@ DB_PATH = "tasks.db"
 
 
 # Контекст-процессор — добавляет переменные в контекст всех шаблонов автоматически.
-@app.context_processor
+@app.context_processor  # Декоратор
 def inject_translations():
     # Получаем язык из query-параметров, например ?lang=en, по умолчанию 'ru'.
     lang = request.args.get("lang", "ru")
