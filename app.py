@@ -17,9 +17,6 @@ import calendar as pycalendar
 # Импортируем словарь переводов из файла translations.py. Ожидается, что там есть dict translations.
 from translations import translations
 
-# Модуль os импортирован — может понадобиться для путей или env-переменных (в текущем коде прямо не используется).
-import os
-
 # Создаём экземпляр Flask-приложения. __name__ помогает Flask находить ресурсы и шаблоны.
 app = Flask(__name__)
 

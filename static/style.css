@@ -58,9 +58,6 @@ html, body {
 .btn-primary {
   background: var(--primary); /* Основной цвет кнопки */
   border: none;               /* Без рамки */
-  /*font-size: 0.8em;*/
-  /*width: 100px;*/
-  /*height: 45px;*/
 }
 .btn-outline-light { border-color: var(--border); color: var(--text); } /* Светлая кнопка с рамкой */
 .btn-outline-light:hover { background: var(--bg-soft); }                /* При наведении — мягкий фон */
@@ -131,4 +128,3 @@ html, body {
 .text-muted small {
   font-size: 0.8rem; color: var(--muted);        /* Мелкий приглушённый текст */
 }
-/*var(--muted)         var(--border)                             xsmall*/
